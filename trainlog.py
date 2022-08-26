@@ -1,3 +1,7 @@
+#Aurthor Marcus Palmer
+#Date: 2022
+#UWE Disertation
+
 #! /usr/bin/python3
 
 #For getting the spreadsheet data from csv
@@ -5,16 +9,20 @@ import os
 import csv
 import sys
 
+#For logging the queries and responses
 import logging
 logging.basicConfig(level=logging.INFO)
 
+#Print in CMD
 print('Do you want train your bot using recent conversation logs?')
 userConfirm = input('Press y or n: ')
 
+#Question in CMD whilst training
 if(userConfirm != "y" and userConfirm != "Y"):
     print('Now exiting log training mode...')
     sys.exit()
 
+#Add open this log for training previous queries better
 with open('BotLog.csv') as g:
     lines = csv.reader(g)
     for line in lines:
@@ -46,6 +54,7 @@ if(userConfirm != "y" and userConfirm != "Y"):
     print('Now exiting log training mode...')
     sys.exit()
 else:
+    #Remove log data
     if os.path.exists("BotLog.csv"):
         os.remove("BotLog.csv")
         print("I removed the recent chat logs.")

@@ -1,4 +1,9 @@
+#Aurthor Marcus Palmer
+#Date: 2022
+#UWE Disertation
+
 #! /usr/bin/python3
+#import these files libraries and modules
 from datetime import datetime, timedelta
 from pytz import timezone
 import pytz
@@ -6,10 +11,11 @@ from datetime import date
 import calendar
 from botConfig import botTimeZone
 
+#for use with config file set time
 def getTime():
     now = datetime.now(pytz.timezone(botTimeZone))
     #now = datetime.utcnow()
-    myTimeZone = " EST"
+    myTimeZone = " GMT"
     mm = str(now.month)
     dd = str(now.day)
     yyyy = str(now.year)
@@ -28,6 +34,7 @@ def getTime():
     weekday = calendar.day_name[mydate.weekday()]
     return "The time is now " + hour + ":" + minute + ampm + myTimeZone
 
+#Using config file set date
 def getDate():
     now = datetime.now(pytz.timezone(botTimeZone))
     mm = str(now.month)

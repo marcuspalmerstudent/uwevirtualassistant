@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 
-<!-- Version 2.0 -->
+<!--
+Aurther Marcus Palmer
+Date: 2022
+UWE Disertation
+-->
 
 <html>
   <head>
+    <!--Title of the virtual assistant window-->
     <title>{{botName}}</title>
+
+    <!-- image source for UWE Logo -->
     <link rel="icon" type="image/png" href="/static/bot.png">
+
+    <!-- Stylesheet which enables styling virtual assistant through CSS file-->
     <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+
+
+    <!-- Import jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
+
+
+
     <script>
+
+    <!-- Send and recieve sound for UWE Virtual Assistant -->
     var userSound = new Audio('/static/userSend.mp3');
     var botSound = new Audio('/static/botSend.mp3');
 
+    <!-- Function for when user sends query play this sound -->
     function playAudio1() {
       userSound.play();
     }
+
+    <!-- Function for when the virtual assistant replies play sound -->
     function playAudio2() {
       botSound.play();
     }
     </script>
 
   </head>
+
+  <!-- Background for  the virtual asssistant window -->
   <body background="{{chatBG}}" onload="getFirstResponse('Hello');">
     <div class="messagecontainer">
       <h1>{{botName}}</h1><hr>
@@ -36,7 +60,7 @@
         <input id="buttonInput" type="submit" value="Send">
       </div>
 
-
+<!-- Use this action/function for showing virtual assistant typing-->
       <script>
 		  var rawText;
 			function botTyping(){
@@ -129,21 +153,7 @@
       </script>
     </div>
 
-<!--<a class="chatSuggest" onclick="$(this).hide(); chatSuggest('Tell me about AI')";>Tell me about AI</a>-->
 
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c3e0bc516297007"></script>
-    <script type="text/javascript">
-var addthis_share = addthis_share || {}
-addthis_share = {
-	passthrough : {
-		twitter: {
-			via: "jasonkries",
-			text: "Chat with {{botName}}, my #Python powered #AI ChatBot: "
-		}
-	}
-}
-</script>
   </body>
 
 </html>

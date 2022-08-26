@@ -1,8 +1,14 @@
+#Aurthor Marcus Palmer
+#Date: 2022
+#UWE Disertation
+
+#Import these files libraries and modules
 from botConfig import confidenceLevel
 from difflib import SequenceMatcher
 import csv
 import random
 
+#Use SequenceMatcher
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
@@ -37,6 +43,8 @@ def getResponse(sendMsg):
                     print("Possible match: " + userText)
                     print("Match is: " + str(checkMatch))
     if exactCount >= 1:
+
+        #Use random to select reply
         botResponsePick = random.choice(exactReply)
     elif successCount >= 1:
         botResponsePick = random.choice(comeBacks)

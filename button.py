@@ -1,5 +1,11 @@
+#Aurthor Marcus Palmer
+#Date: 2022
+#UWE Disertation
+
+#import paperclip
 import pyperclip
 
+#instructions through cmd for button makup
 while True:
     print('What do you want the button to say:')
     linkText = input('Button Text: ')
