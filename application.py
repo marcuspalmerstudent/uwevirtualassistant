@@ -1,7 +1,7 @@
 #Aurther Marcus Palmer
 # Date: 2022
 # UWE Disertation
--->
+
 #! /usr/bin/python3
 
 #Use Flask
@@ -33,9 +33,9 @@ print("Confidence level set to " + str(confidenceLevel))
 
 #Create Log file
 try:
-    file = open('BotLog.csv', 'r')
+    file = open('uwevirtualassistant/BotLog.csv', 'r')
 except IOError:
-    file = open('BotLog.csv', 'w')
+    file = open('uwevirtualassistant/BotLog.csv', 'w')
 
 #If no answer found try this
 def tryBlackboardSupport(myQuery):
@@ -64,7 +64,7 @@ def get_bot_response():
         print(getDate())
     ##Log to CSV file
     print("Logging to CSV file now") #Print in CMD
-    with open('BotLog.csv', 'a', newline='') as logFile: #Print in log file
+    with open('uwevirtualassistant/BotLog.csv', 'a', newline='') as logFile: #Print in log file
         newFileWriter = csv.writer(logFile)
         newFileWriter.writerow([userText, botReply])
         logFile.close()

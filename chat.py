@@ -34,7 +34,7 @@ except IOError:
 
 #If no virtual assistant 100% sure there is no answer then try this
 def tryBlackboardSupport(myQuery):
-	#print("<br>Try this from my friend Google: <a target='_blank' href='" + j + "'>" + query + "</a>")
+	#print("<br>Try this Blackboard: <a target='_blank' href='" + j + "'>" + query + "</a>")
 	return "<br><br>You can try this from Blackboard Support: <a target='_blank' href='https://info.uwe.ac.uk/online/blackboard/'>" + myQuery + "</a>"
 
 #Render these variables inside template

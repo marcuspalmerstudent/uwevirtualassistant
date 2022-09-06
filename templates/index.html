@@ -17,7 +17,12 @@ UWE Disertation
     <!-- Stylesheet which enables styling virtual assistant through CSS file-->
     <link rel="stylesheet" type="text/css" href="/static/style.css">
 
+    <!-- Import UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.5/dist/css/uikit.min.css" />
 
+    <!-- Import UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.5/dist/js/uikit-icons.min.js"></script>
 
     <!-- Import jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -46,18 +51,18 @@ UWE Disertation
   </head>
 
   <!-- Background for  the virtual asssistant window -->
-  <body background="{{chatBG}}" onload="getFirstResponse('Hello');">
+  <body background="{{chatBG}}" onload="getFirstResponse('Hello');" class="uk-background-cover uk-height-max-large" uk-height-viewport="expand: true">
     <div class="messagecontainer">
       <h1>{{botName}}</h1><hr>
       <div id="chatbox">
-        <!--Nothing here in the beginning-->
+        <!-- Virtial assistant container -->
       </div>
       <div id="typing">
         <table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top"><img src="/static/typingnow.gif"></td></tr></table>
       </div>
       <div id="userInput">
-        <input id="textInput" type="text" name="msg" placeholder="Message" autofocus>
-        <input id="buttonInput" type="submit" value="Send">
+        <input id="textInput" type="text" name="msg" placeholder="Message" class="uk-input" autofocus>
+        <input id="buttonInput" type="submit" class="uk-button uk-button-small uk-button-default" value="Send">
       </div>
 
 <!-- Use this action/function for showing virtual assistant typing-->
@@ -65,40 +70,60 @@ UWE Disertation
 		  var rawText;
 			function botTyping(){
 				document.getElementById('typing').style.visibility = "visible";
+				<!-- Time out -->
         setTimeout(getBotResponse, 750);
 			}
-
+<!-- grab user query store in variable -->
         function getFirstResponse(firstText) {
           $.get("/get", { msg: firstText }).done(function(data) {
             var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+		<!-- Grab user message/query -->
 			document.getElementById('typing').style.visibility = "hidden";
+
+			<!-- Play Audio -->
             playAudio2();
             $("#chatbox").append(botHtml);
+
+            <!-- Get the following elements by ID -->
             document.getElementById("buttonInput").disabled = false;
             document.getElementById("textInput").disabled = false;
             document.getElementById("textInput").focus();
-            //document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
-          });
-        }
-        function getBotResponse() {
-          $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
-			document.getElementById('typing').style.visibility = "hidden";
-            playAudio2();
-            $("#chatbox").append(botHtml);
-            document.getElementById("buttonInput").disabled = false;
-            document.getElementById("textInput").disabled = false;
-            document.getElementById("textInput").focus();
+
+            <!-- Use smooth scroll to bring user back to message field -->
             //document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
           });
         }
 
+        <!-- Function for grabbing virtual Assistant response-->
+        function getBotResponse() {
+
+            <!-- Get message-->
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
+			document.getElementById('typing').style.visibility = "hidden";
+
+			<!-- Play virtual assistant sound-->
+            playAudio2();
+            $("#chatbox").append(botHtml);
+
+            <!-- Grab these elements by ID-->
+            document.getElementById("buttonInput").disabled = false;
+            document.getElementById("textInput").disabled = false;
+            document.getElementById("textInput").focus();
+
+            <!-- Smooth scroll into view-->
+            //document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+          });
+        }
+
+<!--user query and append to html area-->
         function chatSuggest(firstText) {
           var userHtml = '<p class="userText">' + firstText + '</p>';
           //$("#textInput").val("");
           $("#chatbox").append(userHtml);
           document.getElementById('typing').style.visibility = "visible";
 
+<!-- Deliver virtual assistant response and append to html area-->
           $.get("/get", { msg: firstText }).done(function(data) {
             var botHtml = '<table class="botText" border="0" width="85%"><tr><td width="70" valign="top"><img class="avatar" src="{{botAvatar}}" align="left" style="margin: 3px;"></td><td valign="top">' + data + '</td></tr></table>';
 			document.getElementById('typing').style.visibility = "hidden";

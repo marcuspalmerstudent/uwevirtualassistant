@@ -9,7 +9,10 @@ body {
     background-color: #000;
     background-repeat: : no-repeat;
     background-attachment: fixed;
-    background-size: 1380px 1024px;
+    background-size: cover;
+
+
+
 }
 
 /* Header 1 properties */
@@ -80,12 +83,7 @@ h3 {
     font-size: 20px;
 }
 
-/*Send button properties*/
-#buttonInput {
-    padding: 3px;
-    font-family: calibri;
-    font-size: 17px;
-}
+
 
 /*Suggestion properties*/
 .chatSuggest{

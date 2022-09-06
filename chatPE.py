@@ -22,7 +22,7 @@ print("Confidence level set to " + str(confidenceLevel))
 
 
 #Create Log file
-botLog = os.path.abspath('mybot/BotLog.csv')
+botLog = os.path.abspath('uwevirtualassistant/BotLog.csv')
 try:
     file = open(botLog, 'r')
 except IOError:
@@ -58,7 +58,7 @@ def get_bot_response():
         print(getDate())
     ##Log to CSV file
     print("Logging to CSV file now")
-    with open(botLog, 'a', newline='') as logFile:
+    with open('uwevirtualassistant/BotLog.csv', 'a', newline='') as logFile:
         newFileWriter = csv.writer(logFile)
         newFileWriter.writerow([userText, botReply])
         logFile.close()
