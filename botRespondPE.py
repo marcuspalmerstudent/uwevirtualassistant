@@ -23,7 +23,7 @@ def getResponse(sendMsg):
     exactReply = []
     exactMatch = .9
 
-    botBrain = os.path.abspath('mybot/data/chatbot.csv')
+    botBrain = os.path.abspath('uwevirtualassistant/data/chatbot.csv')
 
     #use variable g as virtual assistant
     with open(botBrain) as g:
