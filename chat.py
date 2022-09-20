@@ -1,7 +1,7 @@
 #Aurthor Marcus Palmer
 #Date: 2022
 #UWE Disertation
-#
+
 #! /usr/bin/python3
 #Application imports
 from flask import Flask, render_template, request
